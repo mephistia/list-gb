@@ -6,17 +6,7 @@ template <class T>
 class Lista {
 
 public:
-	//Lista();
-	//~Lista();
-	//void add_inicio(const T &dado1);
-	//void add_final(const T &dado1);
-	//void imprime_lista();
-	//void imprimir(Nodo *nodo);
-	//void andar_frente();
-	//void andar_tras();
-	//void remover_item();
-	//void buscar(const T &dado1);
-	//int buscar_r(const T &dado1, Nodo *nodo);
+	
 
 	// construtor
 	Lista<T>::Lista(){
@@ -170,33 +160,32 @@ public:
 		}
 	}
 	
-	// buscar o primeiro dado correspondente
-	void Lista<T>::buscar(const T &dado1) {
-		T dado = NULL;
-		
-		if (tam != 0) {
+	// busca iterativa
+	//void Lista<T>::buscar(const T &dado1) {
+	//	T dado = NULL;
+	//	
+	//	if (tam != 0) {
 
-			for (int i = 0; i != tam; i++) {
-				if (pos->dado == dado1) {
-					dado = pos->dado; // copia o valor para a variável que confirma a busca
-					cout << "A busca encontrou um resultado! Item selecionado." << endl; // não pega itens duplicados
-					break; // sai do loop, "pos" agora seleciona o item buscado
-				}
-				else
-					andar_frente();
-			}
+	//		for (int i = 0; i != tam; i++) {
+	//			if (pos->dado == dado1) {
+	//				dado = pos->dado; // copia o valor para a variável que confirma a busca
+	//				cout << "A busca encontrou um resultado! Item selecionado." << endl; // não pega itens duplicados
+	//				break; // sai do loop, "pos" agora seleciona o item buscado
+	//			}
+	//			else
+	//				andar_frente();
+	//		}
 
-			if (dado == NULL) { // se o valor não foi copiado
-				cout << "A busca não encontrou um item correspondente."
-			}
-		}
+	//		if (dado == NULL) { // se o valor não foi copiado
+	//			cout << "A busca não encontrou um item correspondente."
+	//		}
+	//	}
 
-	}
+	//}
 
 	// busca recursiva
 	int Lista<T>::buscar_r(const T &dado1, Nodo<T> *nodo) {
 		if (cont == tam) {
-			cout << "Não existe item correspondente na lista." << endl;
 			return 0;
 		}
 
@@ -205,13 +194,31 @@ public:
 
 			pos = nodo; // seleciona o nodo do parâmetro
 			if (nodo->dado == dado1) {
-				cout << "Item encontrado e selecionado!" << endl;
 				cont = 0; // zera contador para próximas buscas
 				return 1;
 			}
 			else {
-				return buscar(dado1, nodo->proximo); // vai selecionar o próximo nodo
+				return buscar_r(dado1, nodo->proximo); // vai selecionar o próximo nodo
 			}
+		}
+	}
+
+	// buscar e deletar
+	void Lista<T>::remover(const T dado) {
+		if (buscar_r(dado, primeiro) == 1) {
+			cout << "Item encontrado e selecionado!" << endl;
+			cout << "Deletando..." << endl;
+			remover_item();
+			cout << "Item removido!" << endl;
+			pos = primeiro;
+			cout << "Item selecionado é o primeiro da lista: " << primeiro->dado << endl;
+		}
+		else {
+			cout << "Não existe item correspondente na lista." << endl;
+			pos = primeiro;
+			cout << "Item selecionado é o primeiro da lista: " << primeiro->dado << endl;
+
+
 		}
 	}
 

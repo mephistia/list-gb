@@ -17,12 +17,23 @@ int main() {
 	lista.add_final(10.0f);
 	lista.add_final(4.4f);
 
-	cout << "Lista em ordem de adição: " << endl;
+	cout << "Lista de floats em ordem de adição: " << endl;
 
 	lista.imprime_lista();
 
-	cout << endl << "Lista em ordem ascendente (do menor para o maior):" << endl;
+	cout << endl << "Lista de floats em ordem ascendente (do menor para o maior):" << endl;
 	lista.organizar();
+	lista.imprime_lista();
+
+	cout << endl << "Deletar um valor 10 e o valor 5.5, e um valor não existente:" << endl;
+	lista.remover(10);
+	cout << endl;
+	lista.remover(5.5f);
+	cout << endl;
+	lista.remover(333);
+	cout << endl;
+
+	cout << endl << "Lista organizada novamente: " << endl;
 	lista.imprime_lista();
 
 

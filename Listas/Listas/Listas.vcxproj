@@ -111,10 +111,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Amuleto.h" />
+    <ClInclude Include="Arma.h" />
+    <ClInclude Include="Consumivel.h" />
+    <ClInclude Include="Item.h" />
     <ClInclude Include="Lista.h" />
     <ClInclude Include="Nodo.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Amuleto.cpp" />
+    <ClCompile Include="Arma.cpp" />
+    <ClCompile Include="Consumivel.cpp" />
+    <ClCompile Include="Item.cpp" />
     <ClCompile Include="Origem.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
