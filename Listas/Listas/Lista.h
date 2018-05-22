@@ -25,6 +25,7 @@ public:
 		pos = NULL;
 		tam = 0;
 		cont = 0;
+	
 	}
 
 	// destrutor
@@ -205,6 +206,7 @@ public:
 			pos = nodo; // seleciona o nodo do parâmetro
 			if (nodo->dado == dado1) {
 				cout << "Item encontrado e selecionado!" << endl;
+				cont = 0; // zera contador para próximas buscas
 				return 1;
 			}
 			else {
@@ -213,11 +215,73 @@ public:
 		}
 	}
 
+
+	// trocar dado
+	void Lista<T>::trocar(Nodo<T> *x, Nodo<T> *y) {
+		T temp = x->dado;
+		x->dado = y->dado;
+		y->dado = temp;
+	}
+
+	// nodo do final
+	struct Nodo<T> *nodoFinal(Nodo<T> *nodo) {
+		while (nodo && nodo->proximo) {
+			nodo = nodo->proximo;
+		}
+		return nodo;
+	}
+
+	// nodos primeiro e último como referência
+	Nodo<T> *dividir(Nodo<T> *a, Nodo<T> *b) {
+		T x = b->dado;
+
+		Nodo<T> *i = a->anterior;
+
+		for (Nodo<T> *j = a; j != b; j = j->proximo) {
+			if (j->dado <= x) {
+				if (i == NULL) {
+					i = a;
+				}
+				else {
+					i = i->proximo;
+				}
+
+				trocar(i, j);
+			}
+		}
+
+		if (i == NULL) {
+			i = a;
+		}
+		else {
+			i = i->proximo;
+		}
+
+		trocar(i, b); 
+		return i;
+	}
+
+	// organizar recursivamente
+	void sort_asc(Nodo<T> *a, Nodo<T> *b) {
+		if (b != NULL && a != b && a != b->proximo) {
+			Nodo<T> *p = dividir(a, b);
+			sort_asc(a, p->anterior);
+			sort_asc(p->proximo, b);
+		}
+	}
+
+	// chamar a organização
+	void organizar() {
+		Nodo<T> *n = nodoFinal(primeiro);
+		sort_asc(primeiro, n);
+	}
+
 private:
 	Nodo<T> *primeiro; // ponteiro que sempre aponta para o primeiro item da lista
 	Nodo<T> *ultimo; // ponteiro que sempre aponta para o ultimo item da lista
 	Nodo<T> *pos; // ponteiro da posição atual que estou percorrendo na lista (sempre posiciono no inicio da lista)
-	Nodo<T> *temp; // ponteiro temporário para imprimir a lista etc
+	Nodo<T> *temp; // ponteiro temporário
 	int tam, cont; // tamanho da lista e contador de busca
+	
 
 };
