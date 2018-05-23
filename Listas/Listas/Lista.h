@@ -21,6 +21,16 @@ public:
 	// destrutor
 	Lista<T>::~Lista(){
 	}
+	// limpar a lista
+	void Lista<T>::clear() {
+		primeiro = NULL;
+		primeiro->proximo = NULL;
+		primeiro->anterior = NULL;
+		ultimo = NULL;
+		ultimo->proximo = NULL;
+		ultimo->anterior = NULL;
+		tam = 0;
+	}
 
 	// adiciona no inicio
 	void Lista<T>::add_inicio(const T &dado1) {

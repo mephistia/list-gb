@@ -3,6 +3,8 @@
 #include "Amuleto.h"
 #include "Arma.h"
 #include "Consumivel.h"
+#include "Pilha.h"
+
 
 
 using namespace std;
@@ -10,6 +12,26 @@ using namespace std;
 int main() {
 	setlocale(LC_ALL, "");
 
+	Pilha<char> palavra;
+	cout << "Digite uma palavra..." << endl;
+	
+	std::string p;
+	cin >> p;
+	
+	for (int i = 0; i < p.size(); i++) {
+		cout << "Letra: " << p[i] << endl;
+		palavra.push(p[i]);
+	}
+
+	cout << endl << "Apagando pilha atual...." << endl << "Imprimindo palavra inversa com método inverter..." << endl;
+	palavra.inverter(p);
+
+	cout << endl << "Apagando pilha atual..." << endl << "Verificando se a palavra é palíndromo..." << endl;
+	if (palavra.palindromo(p)) {
+		cout << endl << "A palavra é um palíndromo!" << endl;
+	}
+	else
+		cout << endl << "A palavra NÃO é um palíndromo." << endl;
 
 	cout << endl << "Criando Itens..." << endl;
 	Amuleto rubi;
