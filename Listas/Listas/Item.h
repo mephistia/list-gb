@@ -1,5 +1,7 @@
 #pragma once
 #include <string>
+#include <iostream>
+
 class Item
 {
 public:
@@ -9,24 +11,30 @@ public:
 	float getBonusVida();
 	float getBonusDano();
 	float getBonusDefesa();
-	std::string getNome();
-	std::string getDesc();
-	std::string getTipo();
+	char* getNome();
+	char* getDesc();
+	char* getTipo();
 	bool isEquipped();
 
 	void setBonusVida(float &bonus);
 	void setBonusDano(float &bonus);
 	void setBonusDefesa(float &bonus);
-	void setNome(std::string &nome);
-	void setDesc(std::string &desc);
-	void setTipo(std::string &tipo);
+	void setNome(char *nome);
+	void setDesc(char *desc);
+	void setTipo(char *tipo);
 	void equip();
 
-	void setSprite(std::string sprite);
+	void setSprite(char *sprite);
+
+	// sobrecarregar
+	friend bool operator<(const Item &a, const Item &b);
+	friend bool operator<=(const Item&a, const Item&b);
+	friend std::ostream& operator<<(std::ostream& os, const Item& item);
+
 
 protected:
 	float bonusVida, bonusDano, bonusDefesa;
-	std::string nome, desc, tipo, sprite;
+	char * nome, * desc, *tipo, *sprite;
 	bool equipped;
 };
 

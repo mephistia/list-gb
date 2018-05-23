@@ -283,6 +283,8 @@ public:
 		sort_asc(primeiro, n);
 	}
 
+	
+
 private:
 	Nodo<T> *primeiro; // ponteiro que sempre aponta para o primeiro item da lista
 	Nodo<T> *ultimo; // ponteiro que sempre aponta para o ultimo item da lista

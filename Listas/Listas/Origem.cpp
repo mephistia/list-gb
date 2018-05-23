@@ -1,4 +1,8 @@
 #include "Lista.h"
+#include "Item.h"
+#include "Amuleto.h"
+#include "Arma.h"
+#include "Consumivel.h"
 
 
 using namespace std;
@@ -6,36 +10,35 @@ using namespace std;
 int main() {
 	setlocale(LC_ALL, "");
 
-	Lista<float> lista;
-	lista.add_inicio(3.0f);
-	lista.add_inicio(8.2f);
-	lista.add_final(0.5f);
-	lista.add_final(4.0f);
-	lista.add_final(5.5f);
-	lista.add_final(10.0f);
-	lista.add_final(0.1f);
-	lista.add_final(10.0f);
-	lista.add_final(4.4f);
 
-	cout << "Lista de floats em ordem de adição: " << endl;
+	cout << endl << "Criando Itens..." << endl;
+	Amuleto rubi;
+	Arma cajadoFogo;
+	Consumivel magiaPedra;
+	Amuleto jade;
+	Consumivel pocaoVida;
 
-	lista.imprime_lista();
+	rubi.setNome("Amuleto de Rubi");
+	cajadoFogo.setNome("Cajado de Fogo");
+	magiaPedra.setNome("Magia das Pedras");
+	jade.setNome("Amuleto de Jade");
+	pocaoVida.setNome("Poção da Vida");
 
-	cout << endl << "Lista de floats em ordem ascendente (do menor para o maior):" << endl;
-	lista.organizar();
-	lista.imprime_lista();
+	cout << endl << endl << "Itens criados!" << endl << "Criando a lista..." << endl;
 
-	cout << endl << "Deletar um valor 10 e o valor 5.5, e um valor não existente:" << endl;
-	lista.remover(10);
-	cout << endl;
-	lista.remover(5.5f);
-	cout << endl;
-	lista.remover(333);
-	cout << endl;
+	Lista<Item> bag;
+	bag.add_final(rubi);
+	bag.add_final(magiaPedra);
+	bag.add_final(jade);
+	bag.add_final(cajadoFogo);
+	bag.add_final(pocaoVida);
 
-	cout << endl << "Lista organizada novamente: " << endl;
-	lista.imprime_lista();
+	cout << endl << "Itens adicionados à nova lista!" << endl << endl << "Lista de Itens: " << endl << endl;
+	bag.imprime_lista();
 
+	cout << endl << "Organizando a lista..." << endl << endl << "Lista de Itens por ordem alfabética:" << endl << endl;
+	bag.organizar();
+	bag.imprime_lista();
 
 	system("pause");
 	return 0;

@@ -5,7 +5,6 @@
 Item::Item()
 {
 	bonusVida, bonusDano, bonusDefesa = 0;
-	nome, desc, tipo, sprite = "";
 	equipped = false;
 }
 
@@ -29,17 +28,17 @@ float Item::getBonusDefesa()
 	return bonusDefesa;
 }
 
-std::string Item::getNome()
+char* Item::getNome()
 {
 	return nome;
 }
 
-std::string Item::getDesc()
+char* Item::getDesc()
 {
 	return desc;
 }
 
-std::string Item::getTipo()
+char* Item::getTipo()
 {
 	return tipo;
 }
@@ -64,19 +63,22 @@ void Item::setBonusDefesa(float & bonus)
 	bonusDefesa = bonus;
 }
 
-void Item::setNome(std::string & nome)
+void Item::setNome(char *nome)
 {
-	this->nome = nome;
+	this->nome = new char[strlen(nome)];
+	strcpy(this->nome, nome);
 }
 
-void Item::setDesc(std::string & desc)
+void Item::setDesc(char * desc)
 {
-	this->desc = desc;
+	this->desc = new char[strlen(desc)];
+	strcpy(this->desc, desc);
 }
 
-void Item::setTipo(std::string & tipo)
+void Item::setTipo(char *tipo)
 {
-	this->tipo = tipo;
+	this->tipo = new char[strlen(tipo)];
+	strcpy(this->tipo, tipo);
 }
 
 void Item::equip()
@@ -84,7 +86,24 @@ void Item::equip()
 	equipped = true;
 }
 
-void Item::setSprite(std::string sprite)
+void Item::setSprite(char *sprite)
 {
-	this->sprite = sprite;
+	this->sprite = new char[strlen(sprite)];
+	strcpy(this->sprite, sprite);
+}
+
+bool operator<(const Item & a, const Item & b)
+{
+	return (strcmp(a.nome, b.nome) < 0);
+}
+
+bool operator<=(const Item & a, const Item & b)
+{
+	return (strcmp(a.nome, b.nome) < 0) || (strcmp(a.nome, b.nome) == 0);
+}
+
+std::ostream & operator<<(std::ostream & os, const Item & item)
+{
+	os << item.nome;
+	return os;
 }
