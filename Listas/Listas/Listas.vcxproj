@@ -116,6 +116,7 @@
     <ClInclude Include="Amuleto.h" />
     <ClInclude Include="Arma.h" />
     <ClInclude Include="Consumivel.h" />
+    <ClInclude Include="Fila.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Lista.h" />
     <ClInclude Include="Nodo.h" />

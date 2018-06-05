@@ -3,6 +3,16 @@
 #include <iostream>
 #include <string>
 
+//template <class T>
+//struct Nodo {
+//
+//	T dado;
+//	int prior = 0;
+//	struct Nodo<T> *proximo;
+//	struct Nodo<T> *anterior;
+//
+//};
+
 template <class T>
 
 class Pilha {
