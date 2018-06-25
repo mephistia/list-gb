@@ -4,7 +4,6 @@
 
 Amuleto::Amuleto()
 {
-	tipo = "Amuleto";
 }
 
 

@@ -303,6 +303,15 @@ public:
 		sort_asc(primeiro, n);
 	}
 
+	// retornar dado
+	T Lista<T>::get() {
+		return pos->dado;
+	}
+
+	// resetar posição
+	void Lista<T>::resetPos() {
+		pos=primeiro;
+	}
 	
 
 private:

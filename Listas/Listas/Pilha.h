@@ -112,6 +112,8 @@ public:
 		}
 	}
 
+	
+
 	// adicionar 1 da outra pilha
 	void Pilha<T>::redo() {
 		if (_undo->tam > 0) {
@@ -122,6 +124,11 @@ public:
 		else {
 			cout << endl << "Pilha vazia!" << endl;
 		}
+	}
+
+	// confere se a pilha de redo está vazia
+	void Pilha<T>::isRedoEmpty() {
+
 	}
 
 	// redo todos da outra pilha

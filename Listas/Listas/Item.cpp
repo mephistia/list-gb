@@ -13,6 +13,48 @@ Item::~Item()
 {
 }
 
+void Item::criar(float bonusvida, float bonusdano, float bonusdefesa, int id, char nome[30], char desc[30], char tipo[30])
+{
+	bonusVida = bonusvida;
+	bonusDano = bonusdano;
+	bonusDefesa = bonusdefesa;
+	this->id = id;
+
+	for (int i = 0; i < 30; i++) {
+		if (nome[i] == '#') {
+			nome[i] = '\0';
+			break;
+		}
+			
+	}
+
+	strncpy(this->nome, nome, 30);
+
+
+
+	for (int i = 0; i < 30; i++) {
+		if (desc[i] == '#') {
+			desc[i] = '\0';
+			break;
+		}
+	}
+
+	strncpy(this->desc, desc, 30);
+
+
+	for (int i = 0; i < 30; i++) {
+		if (tipo[i] == '#') {
+			tipo[i] = '\0';
+			break;
+		}
+			
+	}
+
+	strncpy(this->tipo, tipo,30);
+
+	
+}
+
 float Item::getBonusVida()
 {
 	return bonusVida;
@@ -28,19 +70,24 @@ float Item::getBonusDefesa()
 	return bonusDefesa;
 }
 
-char* Item::getNome()
+int Item::getId()
 {
-	return nome;
+	return id;
 }
 
-char* Item::getDesc()
+char Item::getNome(int a)
 {
-	return desc;
+	return nome[a];
 }
 
-char* Item::getTipo()
+char Item::getDesc(int a)
 {
-	return tipo;
+	return desc[a];
+}
+
+char Item::getTipo(int a)
+{
+	return tipo[a];
 }
 
 bool Item::isEquipped()
@@ -48,48 +95,45 @@ bool Item::isEquipped()
 	return equipped;
 }
 
-void Item::setBonusVida(float & bonus)
+void Item::setBonusVida(float bonus)
 {
 	bonusVida = bonus;
 }
 
-void Item::setBonusDano(float & bonus)
+void Item::setBonusDano(float bonus)
 {
 	bonusDano = bonus;
 }
 
-void Item::setBonusDefesa(float & bonus)
+void Item::setBonusDefesa(float bonus)
 {
 	bonusDefesa = bonus;
 }
 
-void Item::setNome(char *nome)
+void Item::setId(int id)
 {
-	this->nome = new char[strlen(nome)];
-	strcpy(this->nome, nome);
+	this->id = id;
 }
 
-void Item::setDesc(char * desc)
+
+void Item::setNome(char nome[30])
 {
-	this->desc = new char[strlen(desc)];
-	strcpy(this->desc, desc);
+	strncpy(this->nome, nome,30);
 }
 
-void Item::setTipo(char *tipo)
+void Item::setDesc(char desc[30])
 {
-	this->tipo = new char[strlen(tipo)];
-	strcpy(this->tipo, tipo);
+	strncpy(this->desc, desc,30);
+}
+
+void Item::setTipo(char tipo[30])
+{
+	strncpy(this->tipo, tipo,30);
 }
 
 void Item::equip()
 {
 	equipped = true;
-}
-
-void Item::setSprite(char *sprite)
-{
-	this->sprite = new char[strlen(sprite)];
-	strcpy(this->sprite, sprite);
 }
 
 bool operator<(const Item & a, const Item & b)

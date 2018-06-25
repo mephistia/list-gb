@@ -4,7 +4,6 @@
 
 Consumivel::Consumivel()
 {
-	tipo = "Consumivel";
 }
 
 

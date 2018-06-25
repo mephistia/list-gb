@@ -8,23 +8,25 @@ public:
 	Item();
 	~Item();
 
+	void criar(float bonusvida, float bonusdano, float bonusdefesa, int id, char nome[30], char desc[30], char tipo[30]);
+
 	float getBonusVida();
 	float getBonusDano();
 	float getBonusDefesa();
-	char* getNome();
-	char* getDesc();
-	char* getTipo();
+	int getId();
+	char getNome(int a);
+	char getDesc(int a);
+	char getTipo(int a);
 	bool isEquipped();
 
-	void setBonusVida(float &bonus);
-	void setBonusDano(float &bonus);
-	void setBonusDefesa(float &bonus);
-	void setNome(char *nome);
-	void setDesc(char *desc);
-	void setTipo(char *tipo);
+	void setBonusVida(float bonus);
+	void setBonusDano(float bonus);
+	void setBonusDefesa(float bonus);
+	void setId(int id);
+	void setNome(char nome[30]);
+	void setDesc(char desc[30]);
+	void setTipo(char tipo[30]);
 	void equip();
-
-	void setSprite(char *sprite);
 
 	// sobrecarregar
 	friend bool operator<(const Item &a, const Item &b);
@@ -34,7 +36,8 @@ public:
 
 protected:
 	float bonusVida, bonusDano, bonusDefesa;
-	char * nome, * desc, *tipo, *sprite;
+	int id;
+	char nome[30], desc[30], tipo[30];
 	bool equipped;
 };
 
